@@ -1,0 +1,17 @@
+copy Categoria(idCategoria, categoriaNome, categoriaDescricao) from 'C:/Users/wellington/Desktop/Inteligencia Empresarial/Praticas/atv_1/Sem Duplicatas/Categoria.csv' with delimiter as ';' CSV HEADER ENCODING 'windows-1252';
+
+copy Pais(idPais, paisNome) from 'C:/Users/wellington/Desktop/Inteligencia Empresarial/Praticas/atv_1/Sem Duplicatas/Pais.csv' with delimiter as ';' CSV HEADER;
+
+copy Cliente(idCliente, clienteNome, clienteContato, clienteCidade, idPais) from 'C:/Users/wellington/Desktop/Inteligencia Empresarial/Praticas/atv_1/Sem Duplicatas/Cliente.csv' with delimiter as ';' CSV HEADER ENCODING 'windows-1252';
+
+copy Fornecedor(idFornecedor, fornecedorNome) from 'C:/Users/wellington/Desktop/Inteligencia Empresarial/Praticas/atv_1/Sem Duplicatas/Fornecedor.csv' with delimiter as ';' CSV HEADER ENCODING 'windows-1252';
+
+copy Transportadora(idTransportadora, transportadoraNome) from 'C:/Users/wellington/Desktop/Inteligencia Empresarial/Praticas/atv_1/Sem Duplicatas/Transportadora.csv' with delimiter as ';' CSV HEADER;
+
+copy Vendedor(idVendedor, vendedorNome) from 'C:/Users/wellington/Desktop/Inteligencia Empresarial/Praticas/atv_1/Sem Duplicatas/Vendedor.csv' with delimiter as ';' CSV HEADER;
+
+copy Pedido(idPedido, frete, data, idCliente, idVendedor, idTransportadora) from 'C:/Users/wellington/Desktop/Inteligencia Empresarial/Praticas/atv_1/Sem Duplicatas/Pedido.csv' with delimiter as ';' CSV HEADER;
+
+copy Produto(idProduto, produtoNome, idCategoria, idFornecedor) from 'C:/Users/wellington/Desktop/Inteligencia Empresarial/Praticas/atv_1/Sem Duplicatas/Produto.csv' with delimiter as ';' CSV HEADER ENCODING 'windows-1252';
+
+copy Item(idPedido, idProduto, margemBruta, vendas, desconto, quantidade) from 'C:/Users/wellington/Desktop/Inteligencia Empresarial/Praticas/atv_1/Sem Duplicatas/Item.csv' with delimiter as ';' CSV HEADER;

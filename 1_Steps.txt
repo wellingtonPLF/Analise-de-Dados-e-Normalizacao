@@ -1,0 +1,9 @@
+Normalizar
+
+1 - Separar Tabelas Aninhadas
+2 - Remover Dependencias Funcionais
+3 - Remover Dependencias Transitivas
+4 - Limpar Duplicatas
+
+
+(Vendas de Custo = Vendas - Margem Bruta)

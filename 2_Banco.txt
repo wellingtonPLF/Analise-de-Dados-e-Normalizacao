@@ -1,0 +1,75 @@
+CREATE TABLE CATEGORIA(
+  	idCategoria INT NOT NULL,
+	categoriaNome varchar(50) NOT NULL,
+	categoriaDescricao varchar(50) NOT NULL,
+	CONSTRAINT pk_categoria PRIMARY KEY(idCategoria)
+);
+
+CREATE TABLE PAIS(
+  	idPais char(3) NOT NULL,
+	paisNome varchar(50) NOT NULL,
+	CONSTRAINT pk_pais PRIMARY KEY(idPais)
+);
+
+CREATE TABLE CLIENTE(
+  	idCliente INT NOT NULL,
+	clienteNome varchar(50) NOT NULL,
+	clienteContato varchar(50) NOT NULL,
+	clienteCidade varchar(50) NOT NULL,
+	idPais char(3) NOT NULL,
+	CONSTRAINT pk_cliente PRIMARY KEY(idCliente),
+	CONSTRAINT fk_pais FOREIGN KEY(idPais) REFERENCES PAIS
+);
+
+CREATE TABLE FORNECEDOR(
+  	idFornecedor INT NOT NULL,
+	fornecedorNome varchar(50) NOT NULL,
+	CONSTRAINT pk_fornecedor PRIMARY KEY(idFornecedor)
+);
+
+CREATE TABLE TRANSPORTADORA(
+  	idTransportadora INT NOT NULL,
+	transportadoraNome varchar(50) NOT NULL,
+	CONSTRAINT pk_transportadora PRIMARY KEY(idTransportadora)
+);
+
+CREATE TABLE VENDEDOR(
+  	idVendedor INT NOT NULL,
+	vendedorNome varchar(50) NOT NULL,
+	CONSTRAINT pk_vendedor PRIMARY KEY(idVendedor)
+);
+
+CREATE TABLE PEDIDO(
+  	idPedido INT NOT NULL,
+	frete FLOAT NOT NULL,
+	data varchar(12) NOT NULL,
+	idCliente INT NOT NULL,
+	idTransportadora INT NOT NULL,
+	idVendedor INT NOT NULL,
+	CONSTRAINT pk_pedido PRIMARY KEY(idPedido),
+	CONSTRAINT fk_cliente FOREIGN KEY(idCliente) REFERENCES CLIENTE,
+	CONSTRAINT fk_transportadora FOREIGN KEY(idTransportadora) REFERENCES TRANSPORTADORA,
+	CONSTRAINT fk_vendedor FOREIGN KEY(idVendedor) REFERENCES VENDEDOR
+);
+
+CREATE TABLE PRODUTO(
+  	idProduto INT NOT NULL,
+	produtoNome varchar(50) NOT NULL,
+	idCategoria INT NOT NULL,
+	idFornecedor INT NOT NULL,
+	CONSTRAINT pk_produto PRIMARY KEY(idProduto),
+	CONSTRAINT fk_categoria FOREIGN KEY(idCategoria) REFERENCES CATEGORIA,
+	CONSTRAINT fk_fornecedor FOREIGN KEY(idFornecedor) REFERENCES FORNECEDOR
+);
+
+CREATE TABLE ITEM(
+	idPedido INT NOT NULL,
+	idProduto INT NOT NULL,
+	margemBruta FLOAT NOT NULL,
+	vendas FLOAT NOT NULL,
+	desconto FLOAT NOT NULL,
+	quantidade INT NOT NULL,
+	CONSTRAINT pk_item PRIMARY KEY(idPedido, idProduto),
+	CONSTRAINT fk_item_pedido FOREIGN KEY(idPedido) REFERENCES PEDIDO,
+	CONSTRAINT fk_item_produto FOREIGN KEY(idProduto) REFERENCES PRODUTO
+);
